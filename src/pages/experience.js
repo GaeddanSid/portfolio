@@ -3,6 +3,43 @@ import * as React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Navbar from "../components/Navbar";
 import Layout from "../layout";
+import styled from "styled-components";
+
+const Heading = styled.div`
+  text-align: center;
+  padding-bottom: 70px;
+
+  > h1 {
+    font-size: 48px;
+    color: #222;
+    margin: 20px;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(
+        to right,
+        rgba(107, 77, 168, 1) 0%,
+        rgba(73, 119, 194, 1) 100%
+      );
+      margin: auto;
+    }
+  }
+`;
+
+const WorkExp = styled.div`
+  max-width: 750px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+`;
+
+const CompanyExp = styled.div`
+  margin-bottom: 50px;
+`;
 
 const experiencePage = ({ data }) => {
   const workNodes = data.allContentfulWorkExperience.nodes;
@@ -11,25 +48,33 @@ const experiencePage = ({ data }) => {
     <Layout>
       <Navbar></Navbar>
       <main>
-        <div>
-          {workNodes.map((workData, index) => (
-            <div key={index}>
-              <h2>{workData.company}</h2>
-              <p>{workData.role}</p>
-              <p>{workData.location}</p>
-              <p>
-                {workData.startDate} -{" "}
-                {workData.current ? "Nuvarande" : workData.endDate}
-              </p>
-              <p>
-                {documentToReactComponents(JSON.parse(workData.decription.raw))}
-              </p>
+        <Heading>
+          <h1>Erfarenhet</h1>
+        </Heading>
+        <WorkExp>
+          <div>
+            {workNodes.map((workData, index) => (
+              <CompanyExp key={index}>
+                <h2>{workData.company}</h2>
+                <p>{workData.role}</p>
+                <p>{workData.location}</p>
+                <p>
+                  {workData.startDate} -{" "}
+                  {workData.current ? "Nuvarande" : workData.endDate}
+                </p>
+                <p>
+                  {documentToReactComponents(
+                    JSON.parse(workData.decription.raw)
+                  )}
+                </p>
 
-              <p>Färdigheter: {workData.skills.join(", ")}</p>
-            </div>
-          ))}
-        </div>
+                <p>Färdigheter: {workData.skills.join(", ")}</p>
+              </CompanyExp>
+            ))}
+          </div>
+        </WorkExp>
       </main>
+      <Link to="/">Start</Link>
     </Layout>
   );
 };

@@ -17,7 +17,7 @@ const Heading = styled.div`
     &:after {
       content: "";
       display: block;
-      width: 200px;
+      width: 50%;
       height: 3px;
       background: linear-gradient(
         to right,
@@ -66,7 +66,6 @@ const PortfolioPage = ({ data }) => {
           <h2>Några projekt i urval</h2>
         </Heading>
         <CategorySelect>
-          {/* Lägg till knappar för varje unik kategori */}
           {Array.from(
             new Set(
               data.allContentfulProject.nodes.map((project) => project.category)
@@ -79,7 +78,7 @@ const PortfolioPage = ({ data }) => {
               {category}
             </button>
           ))}
-          {/* Lägg till en knapp för att visa alla projekt */}
+          {/* Lägger till en knapp för att visa alla projekt */}
           <button onClick={() => setSelectedCategory(null)}>Visa alla</button>
         </CategorySelect>
         <ProjectCard data={data} selectedCategory={selectedCategory} />

@@ -11,10 +11,6 @@ const aboutPage = (props) => {
   const imageUrl = props.data.allContentfulAbout.nodes[0].portrait.file.url;
 
   const styles = {
-    main: {
-      textAlign: "center",
-      padding: "20px",
-    },
     heading: {
       color: "green",
     },
@@ -30,8 +26,8 @@ const aboutPage = (props) => {
     <Layout>
       <Navbar />
       <main style={styles.main}>
-        <h1 style={styles.heading}>Hello</h1>
-        <h2>{aboutName}</h2>
+        <h1 style={styles.heading}>{aboutName}</h1>
+        <h2>{props.data.allContentfulAbout.nodes[0].role}</h2>
         <img src={imageUrl} alt="Portrait" style={styles.image} />
         <article>
           {documentToReactComponents(
@@ -49,6 +45,7 @@ export const query = graphql`
     allContentfulAbout {
       nodes {
         name
+        role
         portrait {
           file {
             url

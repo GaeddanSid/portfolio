@@ -2,11 +2,20 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
+const OuterNav = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+`;
+
 const StyledNav = styled.nav`
   display: flex;
   background-color: #222;
-  padding: 1rem;
+  padding: 10px;
   justify-content: space-around;
+  min-height: 50px;
+  margin-bottom: 40px;
+  border: 2px solid transparent;
 `;
 
 const StyledLinkList = styled.ul`
@@ -31,6 +40,7 @@ const StyledLink = styled(Link)`
 
 const Navbar = () => {
     return (
+        <OuterNav>
         <StyledNav>
         <StyledLinkList>
           <StyledNavItem>
@@ -50,6 +60,7 @@ const Navbar = () => {
           </StyledNavItem>
         </StyledLinkList>
       </StyledNav>
+      </OuterNav>
     );
 };
 

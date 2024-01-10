@@ -49,10 +49,14 @@ const URLLink = styled.a`
     font-weight: bold;
 `;
 
-const ProjectCard = ({ data }) => {
+const ProjectCard = ({ data, selectedCategory }) => {
+    const filteredProjects = selectedCategory
+    ? data.allContentfulProject.nodes.filter(project => project.category === selectedCategory)
+    : data.allContentfulProject.nodes;
+    //filtrerar projekt baserat på vald kategori
     return (
         <ProjectCardContainer>
-            {data.allContentfulProject.nodes.map((project, index) => (
+            {filteredProjects.map((project, index) => (
                 <SingleProject key={index}>
                     <ProjectImage
                         src={project.printScreen.file.url}
@@ -66,16 +70,16 @@ const ProjectCard = ({ data }) => {
                             )}
                         </Paragraph>
                         <Paragraph>
-                            <strong>Course:</strong> {project.course}
+                            <strong>Kurs:</strong> {project.course}
                         </Paragraph>
                         <Paragraph>
-                            <strong>Date:</strong> {project.date}
+                            <strong>Datum:</strong> {project.date}
                         </Paragraph>
                         <Paragraph>
-                            <strong>Category:</strong> {project.category}
+                            <strong>Kategori:</strong> {project.category}
                         </Paragraph>
                         <Paragraph>
-                            <strong>URL:</strong>{" "}
+                            <strong>Länk:</strong>{" "}
                             <URLLink
                                 href={project.url}
                                 target="_blank"

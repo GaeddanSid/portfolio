@@ -1,32 +1,55 @@
 import React from "react";
 import { Link } from "gatsby";
+import styled from "styled-components";
+
+const StyledNav = styled.nav`
+  display: flex;
+  background-color: #222;
+  padding: 1rem;
+  justify-content: space-around;
+`;
+
+const StyledLinkList = styled.ul`
+  display: flex;
+`;
+
+const StyledNavItem = styled.li`
+  margin-right: 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  color: #bfbfbf;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    color: #526cbb;
+    text-decoration: underline;
+  }
+`;
+
 
 const Navbar = () => {
     return (
-        <nav className="flex bg-gray-800 p-4 justify-around">
-            <ul className="flex">
-                <li className="mr-4">
-                    <Link className="text-white" to="/">
-                        Start
-                    </Link>
-                </li>
-                <li className="mr-4">
-                    <Link className="text-white" to="/about">
-                        Om Mig
-                    </Link>
-                </li>
-                <li className="mr-4">
-                    <Link className="text-white" to="/portfolio">
-                        Portfolio
-                    </Link>
-                </li>
-                <li className="mr-4">
-                    <Link className="text-white" to="/contact">
-                        Kontakt
-                    </Link>
-                </li>
-            </ul>
-        </nav>
+        <StyledNav>
+        <StyledLinkList>
+          <StyledNavItem>
+            <StyledLink to="/">Start</StyledLink>
+          </StyledNavItem>
+          <StyledNavItem>
+            <StyledLink to="/about">Om Mig</StyledLink>
+          </StyledNavItem>
+          <StyledNavItem>
+            <StyledLink to="/portfolio">Portfolio</StyledLink>
+          </StyledNavItem>
+          <StyledNavItem>
+            <StyledLink to="/experience">Erfarenheter</StyledLink>
+          </StyledNavItem>
+          <StyledNavItem>
+            <StyledLink to="/contact">Kontakt</StyledLink>
+          </StyledNavItem>
+        </StyledLinkList>
+      </StyledNav>
     );
 };
 

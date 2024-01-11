@@ -19,11 +19,14 @@ const Heading = styled.div`
       display: block;
       width: 50%;
       height: 3px;
+      background: rgb(35, 113, 4);
       background: linear-gradient(
-        to right,
-        rgba(107, 77, 168, 1) 0%,
-        rgba(73, 119, 194, 1) 100%
+        53deg,
+        rgba(35, 113, 4, 1) 0%,
+        rgba(113, 176, 72, 1) 40%,
+        rgba(86, 215, 4, 1) 100%
       );
+
       margin: auto;
     }
   }
@@ -36,19 +39,19 @@ const CategorySelect = styled.div`
 
   > button {
     text-transform: uppercase;
-    border: 2px solid #526cbb;
+    border: 2px solid green;
     border-radius: 5px;
-    color: #526cbb;
+    color: green;
     padding: 10px;
     margin: 10px;
 
     &:hover {
       transform: scale(1.05);
       color: #fff;
-      background-color: #526cbb;
+      background-color: green;
     }
     &:active {
-      background-color: #526cbb;
+      background-color: green;
       //TODO, fixa active
     }
   }

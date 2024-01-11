@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 const OuterNav = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10;
 `;
 
 const StyledNav = styled.nav`
@@ -13,7 +15,7 @@ const StyledNav = styled.nav`
   background-color: #222;
   padding: 10px;
   justify-content: space-around;
-  min-height: 50px;
+  min-height: 70px;
   margin-bottom: 40px;
   border: 2px solid transparent;
 `;
@@ -37,31 +39,33 @@ const StyledLink = styled(Link)`
   }
 `;
 
-
 const Navbar = () => {
-    return (
-        <OuterNav>
-        <StyledNav>
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          menuLinks {
+            name
+            link
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <OuterNav>
+      <StyledNav>
         <StyledLinkList>
-          <StyledNavItem>
-            <StyledLink to="/">Start</StyledLink>
-          </StyledNavItem>
-          <StyledNavItem>
-            <StyledLink to="/about">Om Mig</StyledLink>
-          </StyledNavItem>
-          <StyledNavItem>
-            <StyledLink to="/portfolio">Portfolio</StyledLink>
-          </StyledNavItem>
-          <StyledNavItem>
-            <StyledLink to="/experience">Erfarenheter</StyledLink>
-          </StyledNavItem>
-          <StyledNavItem>
-            <StyledLink to="/contact">Kontakt</StyledLink>
-          </StyledNavItem>
+          {data.site.siteMetadata.menuLinks.map((link) => (
+            <StyledNavItem>
+              <StyledLink to={link.link}>{link.name}</StyledLink>
+            </StyledNavItem>
+          ))}
         </StyledLinkList>
       </StyledNav>
-      </OuterNav>
-    );
+    </OuterNav>
+  );
 };
 
 export default Navbar;

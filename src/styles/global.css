@@ -10,7 +10,7 @@ body {
 }
 
 main {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 h1 {
@@ -26,4 +26,8 @@ h2 {
   margin-bottom: 30px;
   font-size: 24px;
   text-transform: uppercase;
+}
+
+h6{
+  color: #094b09;
 }

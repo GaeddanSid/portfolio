@@ -43,6 +43,7 @@ const CompanyExp = styled.div`
 
 const experiencePage = ({ data }) => {
   const workNodes = data.allContentfulWorkExperience.nodes;
+  const educationNodes = data.allContentfulEducation.nodes;
 
   return (
     <Layout>
@@ -73,6 +74,28 @@ const experiencePage = ({ data }) => {
             ))}
           </div>
         </WorkExp>
+
+        <Heading>
+          <h1>Utbildning</h1>
+        </Heading>
+        <div>
+          {educationNodes.map((educationData, index) => (
+            <div key={index}>
+              <h2>{educationData.school}</h2>
+              <h3>{educationData.program}</h3>
+              <p>
+                {documentToReactComponents(
+                  JSON.parse(educationData.description.raw)
+                )}
+              </p>
+              <div>
+                {documentToReactComponents(
+                  JSON.parse(educationData.courses.raw)
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </main>
       <Link to="/">Start</Link>
     </Layout>
@@ -80,7 +103,7 @@ const experiencePage = ({ data }) => {
 };
 
 export const query = graphql`
-  query WorkQuery {
+  query {
     allContentfulWorkExperience {
       nodes {
         company
@@ -93,6 +116,23 @@ export const query = graphql`
         location
         skills
         startDate
+      }
+    }
+
+    allContentfulEducation {
+      nodes {
+        courses {
+          raw
+        }
+        description {
+          raw
+        }
+        school
+        endDate
+        program
+        location
+        startDate
+        slug
       }
     }
   }

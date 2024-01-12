@@ -57,8 +57,8 @@ const Navbar = () => {
     <OuterNav>
       <StyledNav>
         <StyledLinkList>
-          {data.site.siteMetadata.menuLinks.map((link) => (
-            <StyledNavItem>
+          {data.site.siteMetadata.menuLinks.map((link, index) => (
+            <StyledNavItem key={index}>
               <StyledLink to={link.link}>{link.name}</StyledLink>
             </StyledNavItem>
           ))}

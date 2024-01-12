@@ -41,9 +41,40 @@ const CompanyExp = styled.div`
   margin-bottom: 50px;
 `;
 
+const SkillSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 500px;
+  flex-wrap: wrap;
+  background: rgb(35, 113, 4);
+  background: linear-gradient(
+    53deg,
+    rgba(35, 113, 4, 1) 0%,
+    rgba(113, 176, 72, 1) 40%,
+    rgba(86, 215, 4, 1) 100%
+  );
+`;
+const SkillColumn = styled.div`
+  flex: 1;
+  margin-right: 10px;
+  margin-bottom: 20px;
+
+  ul {
+    margin-right: 10px;
+  }
+
+  li {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+`;
+
 const experiencePage = ({ data }) => {
   const workNodes = data.allContentfulWorkExperience.nodes;
   const educationNodes = data.allContentfulEducation.nodes;
+  const skillsNodes = data.allContentfulSkills.nodes;
+  console.log(skillsNodes);
 
   return (
     <Layout>
@@ -74,6 +105,30 @@ const experiencePage = ({ data }) => {
             ))}
           </div>
         </WorkExp>
+
+        <SkillSection>
+          <SkillColumn>
+            <h2>Färdigheter</h2>
+            <ul>
+              {skillsNodes.flatMap((skillsData, index) =>
+                skillsData.primary.map((skill, skillIndex) => (
+                  <li key={`${index}-primary-${skillIndex}`}>{skill}</li>
+                ))
+              )}
+            </ul>
+            {/* Skapar en array av li element */}
+          </SkillColumn>
+          <SkillColumn>
+            <h2>Övrigt</h2>
+            <ul>
+              {skillsNodes.flatMap((skillsData, index) =>
+                skillsData.secondary.map((skill, skillIndex) => (
+                  <li key={`${index}-secondary-${skillIndex}`}>{skill}</li>
+                ))
+              )}
+            </ul>
+          </SkillColumn>
+        </SkillSection>
 
         <Heading>
           <h1>Utbildning</h1>
@@ -133,6 +188,13 @@ export const query = graphql`
         location
         startDate
         slug
+      }
+    }
+
+    allContentfulSkills {
+      nodes {
+        primary
+        secondary
       }
     }
   }

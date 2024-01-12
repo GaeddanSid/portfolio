@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import Layout from "../layout";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const HeroSection = styled.section`
   position: relative;
@@ -61,6 +62,7 @@ const StartButton = styled(Link)`
 
 const IndexPage = ({ data }) => {
   const aboutData = data.allContentfulAbout.nodes[0];
+  const imageData = getImage(aboutData.portrait);
 
   return (
     <Layout>
@@ -68,7 +70,12 @@ const IndexPage = ({ data }) => {
         <Navbar />
       </header>
       <main>
-        <HeroSection backgroundImage={aboutData.portrait.file.url}>
+        <HeroSection>
+          <GatsbyImage
+            image={imageData}
+            alt="Hero Image"
+            style={{ position: "absolute", width: "100%", height: "100%" }}
+          />
           <GradientOverlay />
           <HeroText>
             <Title>{aboutData.name}</Title>
@@ -88,9 +95,11 @@ export const query = graphql`
         name
         role
         portrait {
-          file {
-            url
-          }
+          gatsbyImageData(
+            placeholder: DOMINANT_COLOR
+            formats: [AUTO, WEBP]
+            width: 1600
+          )
         }
         aboutText {
           raw

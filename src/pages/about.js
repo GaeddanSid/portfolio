@@ -3,6 +3,7 @@ import * as React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Navbar from "../components/Navbar";
 import Layout from "../layout";
+import Footer from "../components/Footer";
 import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
@@ -44,6 +45,7 @@ const aboutPage = (props) => {
         </Article>
         <Link to="/">Start</Link>
       </main>
+      <Footer />
     </Layout>
   );
 };

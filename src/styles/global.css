@@ -31,3 +31,12 @@ h2 {
 h6{
   color: #094b09;
 }
+
+.sectionContainer {
+  max-width: 750px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+}

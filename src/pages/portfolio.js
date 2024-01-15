@@ -5,6 +5,14 @@ import styled from "styled-components";
 import ProjectCard from "../components/ProjectCard";
 import Layout from "../layout";
 
+const ProjectCardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
 const Heading = styled.div`
   text-align: center;
   padding-bottom: 70px;
@@ -60,6 +68,12 @@ const CategorySelect = styled.div`
 const PortfolioPage = ({ data }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
+  const filteredProjects = selectedCategory
+    ? data.allContentfulProject.nodes.filter(
+        (project) => project.category === selectedCategory
+      )
+    : data.allContentfulProject.nodes;
+
   return (
     <Layout>
       <Navbar />
@@ -81,10 +95,13 @@ const PortfolioPage = ({ data }) => {
               {category}
             </button>
           ))}
-          {/* Lägger till en knapp för att visa alla projekt */}
           <button onClick={() => setSelectedCategory(null)}>Visa alla</button>
         </CategorySelect>
-        <ProjectCard data={data} selectedCategory={selectedCategory} />
+        <ProjectCardContainer>
+          {filteredProjects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+        </ProjectCardContainer>
         <Link to="/">Start</Link>
       </main>
     </Layout>
@@ -101,9 +118,13 @@ export const query = graphql`
           raw
         }
         printScreen {
-          file {
-            url
-          }
+          gatsbyImageData(placeholder: DOMINANT_COLOR)
+        }
+        printScreen2 {
+          gatsbyImageData(placeholder: DOMINANT_COLOR)
+        }
+        printScreen3 {
+          gatsbyImageData(placeholder: DOMINANT_COLOR)
         }
         title
         category

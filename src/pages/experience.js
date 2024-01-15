@@ -94,11 +94,8 @@ const experiencePage = ({ data }) => {
                   {workData.startDate} -{" "}
                   {workData.current ? "Nuvarande" : workData.endDate}
                 </p>
-                <p>
-                  {documentToReactComponents(
-                    JSON.parse(workData.decription.raw)
-                  )}
-                </p>
+
+                {documentToReactComponents(JSON.parse(workData.decription.raw))}
 
                 <p>Färdigheter: {workData.skills.join(", ")}</p>
               </CompanyExp>
@@ -138,11 +135,11 @@ const experiencePage = ({ data }) => {
             <div key={index}>
               <h2>{educationData.school}</h2>
               <h3>{educationData.program}</h3>
-              <p>
+              <div>
                 {documentToReactComponents(
                   JSON.parse(educationData.description.raw)
                 )}
-              </p>
+              </div>
               <div>
                 {documentToReactComponents(
                   JSON.parse(educationData.courses.raw)

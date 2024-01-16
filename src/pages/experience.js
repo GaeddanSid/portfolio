@@ -196,3 +196,5 @@ export const query = graphql`
 `;
 
 export default experiencePage;
+
+export const Head = () => <title>Erfarenhet</title>;

@@ -82,3 +82,5 @@ const contactPage = ({ data }) => {
 };
 
 export default contactPage;
+
+export const Head = () => <title>Kontakt</title>;

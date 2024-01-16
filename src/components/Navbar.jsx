@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 const OuterNav = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 10;
@@ -13,10 +13,9 @@ const OuterNav = styled.div`
 const StyledNav = styled.nav`
   display: flex;
   background-color: #222;
-  padding: 10px;
+  padding: 20px;
   justify-content: space-around;
-  min-height: 70px;
-  margin-bottom: 40px;
+  min-height: 90px;
   border: 2px solid transparent;
 `;
 

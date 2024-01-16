@@ -61,3 +61,5 @@ export const query = graphql`
 `;
 
 export default aboutPage;
+
+export const Head = () => <title>Om mig</title>;

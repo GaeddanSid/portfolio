@@ -1,8 +1,7 @@
 // Footer.js
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+import { graphql, useStaticQuery } from "gatsby";
 
 const FooterContainer = styled.footer`
   background-color: #222;
@@ -16,9 +15,6 @@ const Footer = () => {
     query ContactQuery {
       allContentfulContactinfo {
         nodes {
-          contactImage {
-            gatsbyImageData(placeholder: DOMINANT_COLOR)
-          }
           email
           gitHub
           linkedIn
@@ -26,21 +22,21 @@ const Footer = () => {
           name
           phone
           portfolio
+          contactImage {
+            gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+          }
         }
       }
     }
   `);
-
   const contactInfo = data.allContentfulContactinfo.nodes[0];
-  const contactImage = getImage(contactInfo.contactImage);
 
   return (
     <FooterContainer>
-      {/* <GatsbyImage image={contactImage} alt={contactInfo.name} /> */}
-      <h2>{contactInfo.name}</h2>
+      <h4>{contactInfo.name}</h4>
       <p>{contactInfo.location}</p>
       <p>Email: {contactInfo.email}</p>
-      <p>Phone: {contactInfo.phone}</p>
+      <p>Telefon: {contactInfo.phone}</p>
       <p>
         GitHub:{" "}
         <a href={contactInfo.gitHub} target="_blank" rel="noopener noreferrer">

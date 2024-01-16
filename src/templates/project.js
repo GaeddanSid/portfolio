@@ -1,7 +1,6 @@
 // src/templates/project.js
 import React from "react";
 import { Link, graphql } from "gatsby";
-import Navbar from "../components/Navbar";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styled from "styled-components";
@@ -46,7 +45,6 @@ const ProjectTemplate = ({ data }) => {
 
   return (
     <>
-      <Navbar></Navbar>
       <main>
         <h1>{project.title}</h1>
 

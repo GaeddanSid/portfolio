@@ -1,9 +1,6 @@
 import { graphql, Link } from "gatsby";
 import * as React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Navbar from "../components/Navbar";
-import Layout from "../layout";
-import Footer from "../components/Footer";
 import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
@@ -22,19 +19,16 @@ const Article = styled.article`
 `;
 
 const aboutPage = (props) => {
-  console.log(props);
   const aboutNode = props.data.allContentfulAbout.nodes[0];
   const aboutName = aboutNode.name;
   // const imageUrl = props.data.allContentfulAbout.nodes[0].portrait.file.url;
   const imageData = getImage(aboutNode.portrait);
 
   return (
-    <Layout>
-      <Navbar />
+    <>
       <main>
         <Heading>{aboutName}</Heading>
         <h2>{aboutNode.role}</h2>
-        {/* <img src={imageUrl} alt="Portrait" style={styles.image} /> */}
         <ImageContainer>
           <GatsbyImage image={imageData} alt="Portrait" />
         </ImageContainer>
@@ -45,8 +39,7 @@ const aboutPage = (props) => {
         </Article>
         <Link to="/">Start</Link>
       </main>
-      <Footer />
-    </Layout>
+    </>
   );
 };
 

@@ -1,9 +1,6 @@
 import * as React from "react";
 import { graphql, Link } from "gatsby";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import styled from "styled-components";
-import Layout from "../layout";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const HeroSection = styled.section`
@@ -63,14 +60,10 @@ const StartButton = styled(Link)`
 
 const IndexPage = ({ data }) => {
   const aboutData = data.allContentfulAbout.nodes[0];
-  const imageData = getImage(aboutData.portrait);
   const imageData2 = getImage(aboutData.startImage);
 
   return (
-    <Layout>
-      <header>
-        <Navbar />
-      </header>
+    <>
       <main>
         <HeroSection>
           <GatsbyImage
@@ -86,8 +79,7 @@ const IndexPage = ({ data }) => {
           </HeroText>
         </HeroSection>
       </main>
-      <Footer />
-    </Layout>
+    </>
   );
 };
 
@@ -113,4 +105,4 @@ export const query = graphql`
 
 export default IndexPage;
 
-export const Head = () => <title>Gäddan</title>;
+export const Head = () => <title>Pontus Norén Stomberg</title>;

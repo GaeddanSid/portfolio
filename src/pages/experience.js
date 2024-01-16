@@ -1,8 +1,6 @@
 import { graphql, Link } from "gatsby";
 import * as React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Navbar from "../components/Navbar";
-import Layout from "../layout";
 import styled from "styled-components";
 
 const Heading = styled.div`
@@ -19,10 +17,12 @@ const Heading = styled.div`
       display: block;
       width: 50%;
       height: 3px;
+      background: rgb(35, 113, 4);
       background: linear-gradient(
-        to right,
-        rgba(107, 77, 168, 1) 0%,
-        rgba(73, 119, 194, 1) 100%
+        53deg,
+        rgba(35, 113, 4, 1) 0%,
+        rgba(113, 176, 72, 1) 40%,
+        rgba(86, 215, 4, 1) 100%
       );
       margin: auto;
     }
@@ -74,11 +74,9 @@ const experiencePage = ({ data }) => {
   const workNodes = data.allContentfulWorkExperience.nodes;
   const educationNodes = data.allContentfulEducation.nodes;
   const skillsNodes = data.allContentfulSkills.nodes;
-  console.log(skillsNodes);
 
   return (
-    <Layout>
-      <Navbar></Navbar>
+    <>
       <main>
         <Heading>
           <h1>Erfarenhet</h1>
@@ -150,7 +148,7 @@ const experiencePage = ({ data }) => {
         </div>
       </main>
       <Link to="/">Start</Link>
-    </Layout>
+    </>
   );
 };
 

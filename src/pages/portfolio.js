@@ -1,9 +1,7 @@
 import { graphql, Link } from "gatsby";
-import Navbar from "../components/Navbar";
 import React, { useState } from "react";
 import styled from "styled-components";
 import ProjectCard from "../components/ProjectCard";
-import Layout from "../layout";
 
 const ProjectCardContainer = styled.div`
   display: flex;
@@ -75,8 +73,7 @@ const PortfolioPage = ({ data }) => {
     : data.allContentfulProject.nodes;
 
   return (
-    <Layout>
-      <Navbar />
+    <>
       <main>
         <Heading>
           <h1>Projekt</h1>
@@ -104,7 +101,7 @@ const PortfolioPage = ({ data }) => {
         </ProjectCardContainer>
         <Link to="/">Start</Link>
       </main>
-    </Layout>
+    </>
   );
 };
 

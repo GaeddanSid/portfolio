@@ -31,6 +31,19 @@ const Footer = () => {
   `);
   const contactInfo = data.allContentfulContactinfo.nodes[0];
 
+  if (!contactInfo) {
+    contactInfo = {
+      name: "Pontus Norén Stomberg",
+      location: "Göteborg",
+      email: "pontus.noren.stomberg@Iths.se",
+      phone: "+46762731260",
+      gitHub: "https://github.com/GaeddanSid",
+      linkedIn: "https://www.linkedin.com/in/pontus-norén-stomberg",
+      portfolio: "https://gaeddansid.netlify.app/",
+    };
+    //lägger till  en kontroll och sätter värden manuell ifall inget hämtas.
+  }
+
   return (
     <FooterContainer>
       <h4>{contactInfo.name}</h4>

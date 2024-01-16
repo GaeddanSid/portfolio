@@ -1,7 +1,6 @@
 // Footer.js
 import React from "react";
 import styled from "styled-components";
-import { graphql, useStaticQuery } from "gatsby";
 
 const FooterContainer = styled.footer`
   background-color: #222;
@@ -10,38 +9,9 @@ const FooterContainer = styled.footer`
   text-align: center;
 `;
 
-const Footer = () => {
-  const data = useStaticQuery(graphql`
-    query ContactQuery {
-      allContentfulContactinfo {
-        nodes {
-          email
-          gitHub
-          linkedIn
-          location
-          name
-          phone
-          portfolio
-          contactImage {
-            gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
-          }
-        }
-      }
-    }
-  `);
-  const contactInfo = data.allContentfulContactinfo.nodes[0];
-
+const Footer = ({ contactInfo }) => {
   if (!contactInfo) {
-    contactInfo = {
-      name: "Pontus Norén Stomberg",
-      location: "Göteborg",
-      email: "pontus.noren.stomberg@Iths.se",
-      phone: "+46762731260",
-      gitHub: "https://github.com/GaeddanSid",
-      linkedIn: "https://www.linkedin.com/in/pontus-norén-stomberg",
-      portfolio: "https://gaeddansid.netlify.app/",
-    };
-    //lägger till  en kontroll och sätter värden manuell ifall inget hämtas.
+    return null;
   }
 
   return (

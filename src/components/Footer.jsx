@@ -1,6 +1,7 @@
 // Footer.js
 import React from "react";
 import styled from "styled-components";
+import { graphql, useStaticQuery } from "gatsby";
 
 const FooterContainer = styled.footer`
   background-color: #222;
@@ -9,10 +10,26 @@ const FooterContainer = styled.footer`
   text-align: center;
 `;
 
-const Footer = ({ contactInfo }) => {
-  if (!contactInfo) {
-    return null;
-  }
+const Footer = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulContactinfo {
+        nodes {
+          email
+          gitHub
+          linkedIn
+          location
+          name
+          phone
+          portfolio
+          contactImage {
+            gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+          }
+        }
+      }
+    }
+  `);
+  const contactInfo = data.allContentfulContactinfo.nodes[0];
 
   return (
     <FooterContainer>

@@ -4,6 +4,9 @@ import styled from "styled-components";
 const SearchForm = styled.form`
   display: flex;
   margin-bottom: 20px;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const SearchInput = styled.input`

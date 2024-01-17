@@ -33,7 +33,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    color: #526cbb;
+    color: #009439;
     text-decoration: underline;
   }
 `;

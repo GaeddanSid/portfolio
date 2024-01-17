@@ -9,6 +9,31 @@ const NotFoundContainer = styled.div`
   margin: auto;
   padding: 20px;
   text-align: center;
+
+  > h4 {
+    margin: 20px;
+    font-size: 18px;
+  }
+
+  > button {
+    text-transform: uppercase;
+    border: 2px solid green;
+    border-radius: 5px;
+    color: green;
+    width: 100px;
+    padding: 10px;
+    margin: 10px;
+
+    &:hover {
+      transform: scale(1.05);
+      color: #fff;
+      background-color: green;
+    }
+    &:active {
+      background-color: green;
+      //TODO, fixa active
+    }
+  }
 `;
 
 const SearchResultContainer = styled.div`
@@ -18,6 +43,29 @@ const SearchResultContainer = styled.div`
 
   &:hover {
     transform: scale(1.05);
+  }
+`;
+
+const VisitContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    margin-top: 15px;
+  }
+
+  > h3 {
+    font-size: 24px;
+  }
+
+  > a {
+    font-size: 18px;
+    color: #222;
+
+    &:hover {
+      transform: scale(1.05);
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -39,8 +87,18 @@ const NotFoundPage = ({ data }) => {
 
   return (
     <NotFoundContainer>
-      <h2>Jag kan inte finna vad du letar efter.</h2>
-      <p>Testa att söka på projektnamn eller önskad sida: </p>
+      <h2>Sidan finns inte.</h2>
+      <button>
+        <Link to="/">Till Start</Link>
+      </button>
+      <VisitContainer>
+        <h3>Eller besök gärna:</h3>
+        <Link to="/about">Om Mig</Link>
+        <Link to="/portfolio">Portfolio</Link>
+        <Link to="/experience">Erfarenhet</Link>
+        <Link to="/contact">Kontakt</Link>
+      </VisitContainer>
+      <h4>Testa gärna att söka på projektnamn eller önskad sida: </h4>
       <div>
         <Search onSubmit={handleSearch} />
         {searchResults.map((result) => (

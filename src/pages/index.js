@@ -75,6 +75,7 @@ const IndexPage = ({ data }) => {
           <HeroText>
             <Title>{aboutData.name}</Title>
             <Subtitle>{aboutData.role}</Subtitle>
+            {/* <Subtitle>{aboutData.aboutShort}</Subtitle> */}
             <StartButton to="/about">Mer om mig</StartButton>
           </HeroText>
         </HeroSection>
@@ -89,6 +90,7 @@ export const query = graphql`
       nodes {
         name
         role
+        aboutShort
         portrait {
           gatsbyImageData(placeholder: DOMINANT_COLOR, formats: [AUTO, WEBP])
         }

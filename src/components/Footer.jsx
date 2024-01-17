@@ -112,10 +112,10 @@ const Footer = () => {
     <FooterContainer>
       <FooterContent>
         <FooterInfo>
-          <h4>
+          <p>
             <FontAwesomeIcon icon={faUser} size="2x" />
             {contactInfo.name}
-          </h4>
+          </p>
           <p>
             <FontAwesomeIcon icon={faLocationDot} size="2x" />
             {contactInfo.location}

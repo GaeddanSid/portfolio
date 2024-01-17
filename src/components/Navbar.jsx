@@ -117,7 +117,7 @@ const Navbar = () => {
   return (
     <OuterNav>
       <StyledNav>
-        <Link to="/">
+        <Link to="/" aria-label="Home">
           <FontAwesomeIcon icon={faHome} size="2x" color="white" />
         </Link>
         <StyledLinkList menuOpen={menuOpen}>

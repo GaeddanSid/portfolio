@@ -1,0 +1,15 @@
+Tillgänglighet:
+
+1. Använder aria-label i Navbar på länkar som saknar text.
+2. Sekventiella element eg h1-h6.
+3. Sätter Language attribut till SE för skärmläsare.
+
+
+
+SEO:
+
+1. Lägg till meta description på document.
+2. Document has a <title> element, samtliga sidor
+3. Links have descriptive text
+4. SVG filer används
+5. Bilder har alt- attribut

@@ -99,7 +99,9 @@ const PortfolioPage = ({ data }) => {
             <ProjectCard key={index} project={project} />
           ))}
         </ProjectCardContainer>
-        <Link to="/">Start</Link>
+        <Link className="backToStart" to="/">
+          Hem
+        </Link>
       </main>
     </>
   );

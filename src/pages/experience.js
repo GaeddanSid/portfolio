@@ -38,7 +38,6 @@ const ExperienceContainer = styled.div`
 
 const ExperienceSection = styled.div`
   margin-bottom: 50px;
-
   padding: 0 16px;
   border-left: 2px solid #222;
   border-right: 2px solid #222;
@@ -104,12 +103,13 @@ const experiencePage = ({ data }) => {
   const workNodes = data.allContentfulWorkExperience.nodes;
   const educationNodes = data.allContentfulEducation.nodes;
   const skillsNodes = data.allContentfulSkills.nodes;
+  const siteText = data.allContentfulSiteText.nodes[0];
 
   return (
     <>
       <main>
         <Heading>
-          <h1>Erfarenhet</h1>
+          <h1>{siteText.experienceHeading}</h1>
         </Heading>
         <ExperienceContainer>
           <div>
@@ -133,7 +133,7 @@ const experiencePage = ({ data }) => {
 
         <SkillSection>
           <SkillColumn>
-            <h2>Tekniker</h2>
+            <h2>{siteText.experienceSubHeading}</h2>
             <ul>
               {skillsNodes.flatMap((skillsData, index) =>
                 skillsData.primary.map((skill, skillIndex) => (
@@ -144,7 +144,7 @@ const experiencePage = ({ data }) => {
             {/* Skapar en array av li element */}
           </SkillColumn>
           <SkillColumn>
-            <h2>Färdigheter</h2>
+            <h2>{siteText.experienceSubHeading2}</h2>
             <ul>
               {skillsNodes.flatMap((skillsData, index) =>
                 skillsData.secondary.map((skill, skillIndex) => (
@@ -154,7 +154,7 @@ const experiencePage = ({ data }) => {
             </ul>
           </SkillColumn>
           <SkillColumn>
-            <h2>Övrigt</h2>
+            <h2>{siteText.experienceSubHeading3}</h2>
             <ul>
               {skillsNodes.flatMap((skillsData, index) =>
                 skillsData.other.map((skill, skillIndex) => (
@@ -166,7 +166,7 @@ const experiencePage = ({ data }) => {
         </SkillSection>
 
         <Heading>
-          <h1>Utbildning</h1>
+          <h1>{siteText.educationHeading}</h1>
         </Heading>
         <ExperienceContainer>
           <div>
@@ -182,7 +182,7 @@ const experiencePage = ({ data }) => {
                     JSON.parse(educationData.description.raw)
                   )}
                 </div>
-                <h4>Kurser:</h4>
+                <h4>{siteText.educationSubHeading}</h4>
                 <div>
                   {documentToReactComponents(
                     JSON.parse(educationData.courses.raw)
@@ -236,6 +236,19 @@ export const query = graphql`
         primary
         secondary
         other
+      }
+    }
+
+    allContentfulSiteText {
+      nodes {
+        portfolioHeading
+        portfolioSubHeading
+        experienceHeading
+        experienceSubHeading
+        experienceSubHeading2
+        experienceSubHeading3
+        educationHeading
+        educationSubHeading
       }
     }
   }

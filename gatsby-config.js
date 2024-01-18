@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `Portfolio`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://gaeddansid.netlify.app/`,
     menuLinks: [
       {
         name: "Start",

@@ -31,7 +31,6 @@ const NotFoundContainer = styled.div`
     }
     &:active {
       background-color: green;
-      //TODO, fixa active
     }
   }
 `;

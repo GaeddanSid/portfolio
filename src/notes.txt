@@ -7,14 +7,98 @@ Tillgänglighet:
 5. Kontraster och läsbarhet
 
 
+Aria-label för länkar utan text eller knappar:
+
+Använd aria-label för att tillhandahålla en textbeskrivning för länkar, knappar och andra interaktiva element som saknar synlig text. Detta underlättar för användare med skärmläsare eller andra hjälpmedel.
+Semantisk HTML för struktur:
+
+Använd semantiska HTML-element som header, footer, main och rätt strukturering med h1 till h6 för att skapa en meningsfull och förståelig hierarki. Detta hjälper skärmläsare och andra enheter att förstå webbplatsens struktur.
+Lang-attribut för skärmläsare:
+
+Ange lang-attributet på HTML-taggen och sätt det till "sv" (för svenska) för att informera skärmläsare om det primära språket på webbplatsen.
+Alt-attribut för bilder:
+
+Använd alt-attributet för att tillhandahålla en beskrivande text för bilder. Detta är särskilt viktigt för användare som inte kan se bilderna och är beroende av skärmläsare.
+Kontraster och läsbarhet:
+
+Se till att det finns tillräcklig kontrast mellan text och bakgrund för att förbättra läsbarheten, särskilt för personer med synnedsättningar. Använd en läsbar font och se till att texten är tillräckligt stor.
+
+
 
 SEO:
 
-1. Använder Meta description på document, namn och nyckelord.
-2. Document has a <title> element, samtliga sidor
-3. Links have descriptive text
-4. SVG filer används
-5. Bilder har alt- attribut
+1. Meta description för dokumentet
+2. <title> element på alla sidor
+3. Deskriptiv text för länkar
+4. Användning av SVG-filer
+5. Alt-attribut för bilder
 6. Responsiv design
-7. Okomplicerade URLer
+7. Okomplicerade URL:er
 8. Semantisk HTML
+
+Meta description för dokumentet:
+
+Använd meta-taggen med attributet description för att tillhandahålla en kort och informativ beskrivning av sidan. Detta hjälper sökmotorer och användare att förstå innehållet på sidan.
+<title> element på alla sidor:
+
+Se till att varje sida har ett unikt och beskrivande <title>-element. Detta är viktigt för sökmotorer och kan påverka sidans rangordning i sökresultaten.
+Deskriptiv text för länkar:
+
+Använd tydlig och beskrivande text för dina länkar istället för generiska som "klicka här". Detta hjälper sökmotorer att förstå innehållet på den länkade sidan.
+Användning av SVG-filer:
+
+Använd SVG (Scalable Vector Graphics) för grafiska element när det är möjligt. SVG-filer är sökbara och kan förbättra SEO genom att tillhandahålla indexering av innehållet.
+Alt-attribut för bilder:
+
+Tilldela korrekta och beskrivande alt-attribut till bilder. Detta inte bara förbättrar tillgängligheten utan ger också sökmotorer information om bildinnehållet.
+Responsiv design:
+
+Se till att din webbplats är responsiv och anpassar sig till olika enheter och skärmstorlekar. Detta är viktigt för både användarupplevelsen och sökmotorernas rankingalgoritmer.
+Okomplicerade URL:er:
+
+Använd enklare och läsbara URL:er som tydligt beskriver sidans innehåll. Undvik långa och komplicerade strängar av siffror och bokstäver.
+Semantisk HTML:
+
+Använd semantisk HTML för att strukturera din webbplats på ett meningsfullt sätt. Användningen av korrekta HTML-element och en tydlig hierarki kan förbättra hur sökmotorer tolkar sidan.
+
+
+
+Headless CMS:
+Fördelar:
+
+Flexibilitet: Headless CMS erbjuder ökad flexibilitet när det gäller att presentera innehållet på olika plattformar och enheter, eftersom det separerar frontenden från bakenden.
+
+Skalbarhet: Headless CMS är vanligtvis mer skalbart, särskilt när det gäller att hantera stora volymer av innehåll och att stödja tillväxt över tid.
+
+Teknologioberoende: Eftersom headless CMS levererar innehållet via API:er, kan det användas med olika frontend-ramverk och teknologier, vilket ger utvecklare större frihet.
+
+Bättre prestanda: Eftersom headless CMS fokuserar på att leverera endast innehållet, kan det resultera i bättre prestanda jämfört med traditionella CMS som är mer funktionstunga.
+
+Snabbare utvecklingstid: Utvecklare kan arbeta snabbare och mer effektivt eftersom de inte är bundna till en specifik frontend och kan använda moderna teknologier.
+
+Nackdelar:
+
+Inlärningskurva: För användare som är vana vid traditionella CMS kan övergången till ett headless CMS innebära en inlärningskurva, särskilt om de inte är bekanta med konceptet om att separera frontend och backend.
+
+Administrationssvårigheter: Headless CMS kan sakna den användarvänliga administration som traditionella CMS, som WordPress, erbjuder. Det kan vara mer tekniskt orienterat och mindre intuitivt för vissa användare.
+
+Kostnad: Vissa headless CMS-lösningar kan vara dyrare än traditionella CMS, särskilt om de erbjuder avancerade funktioner och skalbarhet.
+
+Traditionellt CMS (exempelvis WordPress):
+Fördelar:
+
+Enkel användning: Traditionella CMS, som WordPress, har oftast en lättanvänd administrativ gränssnitt vilket gör det enkelt för användare att hantera och publicera innehåll utan tekniska kunskaper.
+
+Mångsidighet: WordPress och liknande CMS erbjuder ett brett utbud av plugins och teman, vilket gör det enkelt att anpassa webbplatsens utseende och funktionalitet utan att kräva djupgående programmeringskunskaper.
+
+Snabbt att komma igång: Att sätta upp en webbplats med ett traditionellt CMS är ofta snabbare och enklare än att bygga en från grunden med ett headless CMS.
+
+Stor gemenskap och support: Eftersom traditionella CMS som WordPress har en stor användargemenskap finns det mycket stöd, dokumentation och forum där användare kan dela erfarenheter och få hjälp.
+
+Nackdelar:
+
+Begränsad flexibilitet: Traditionella CMS kan vara mindre flexibla när det gäller att anpassa och leverera innehåll på olika plattformar jämfört med headless CMS.
+
+Teknikberoende: Användare är bundna till de teknologier och ramverk som traditionella CMS använder, vilket kan begränsa utvecklingsfriheten.
+
+Prestanda: Eftersom traditionella CMS hanterar både frontend och backend kan de ibland vara mindre effektiva när det gäller prestanda, särskilt för stora och komplexa webbplatser.

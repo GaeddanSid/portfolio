@@ -64,6 +64,7 @@ const CategorySelect = styled.div`
 
 const PortfolioPage = ({ data }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const siteText = data.allContentfulSiteText.nodes[0];
 
   const filteredProjects = selectedCategory
     ? data.allContentfulProject.nodes.filter(
@@ -75,8 +76,8 @@ const PortfolioPage = ({ data }) => {
     <>
       <main>
         <Heading>
-          <h1>Projekt</h1>
-          <h2>Några projekt i urval</h2>
+          <h1>{siteText.portfolioHeading}</h1>
+          <h2>{siteText.portfolioSubHeading}</h2>
         </Heading>
         <CategorySelect>
           {Array.from(
@@ -125,6 +126,12 @@ export const query = graphql`
         category
         slug
         url
+      }
+    }
+    allContentfulSiteText {
+      nodes {
+        portfolioHeading
+        portfolioSubHeading
       }
     }
   }

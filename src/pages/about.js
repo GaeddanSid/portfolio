@@ -26,14 +26,14 @@ const ImageContainer = styled.div`
   position: relative;
 
   &::before {
-    content: ""; // Pseudoelement för att skapa en "overlay" över bilden
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); // Justera genomskinligheten efter behov
-    z-index: 1; // Placera "overlay" under knappen
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
   }
 `;
 
@@ -92,10 +92,6 @@ const aboutPage = (props) => {
   const imageData = getImage(aboutNode.portrait);
 
   const handleDownload = () => {
-    // Lägg till logik för att generera eller hämta PDF-filen här
-    // Exempel: window.open("url-till-ditt-CV.pdf", "_blank");
-
-    // Om du har PDF-filen som en lokal fil i ditt projekt:
     const pdfPath = "/CV-PontusNorenStomberg.pdf";
     const link = document.createElement("a");
     link.href = pdfPath;

@@ -52,7 +52,6 @@ const ProjectButton = styled.button`
   }
   &:active {
     background-color: green;
-    //TODO, fixa active
   }
 `;
 

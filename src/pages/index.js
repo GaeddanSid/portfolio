@@ -4,17 +4,17 @@ import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const MainContainer = styled.main`
-  /* max-width: 1660px;
+  /* max-width: 1660px; */
   background-color: #222;
   margin: auto;
-  padding: 0; */
+  padding: 0;
   text-align: center;
 `;
 
 const HeroSection = styled.section`
   position: relative;
   height: 100vh;
-  /* max-width: 1660px; */
+  margin: auto;
   /* background-image: url(${(props) => props.backgroundImage});
   background-size: cover;
   background-position: center; */
@@ -86,7 +86,7 @@ const IndexPage = ({ data }) => {
             style={{
               width: "100%",
               height: "100%",
-              maxWidth: "1700px",
+              maxWidth: "1360px",
               maxHeight: "100vh",
               objectFit: "cover",
               objectPosition: "50% 50%",
@@ -96,7 +96,6 @@ const IndexPage = ({ data }) => {
           <HeroText>
             <Title>{aboutData.name}</Title>
             <Subtitle>{aboutData.role}</Subtitle>
-            {/* <Subtitle>{aboutData.aboutShort}</Subtitle> */}
             <StartButton to="/about">Mer om mig</StartButton>
           </HeroText>
         </HeroSection>

@@ -1,4 +1,4 @@
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import * as React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styled from "styled-components";
@@ -16,6 +16,7 @@ const Heading = styled.div`
       content: "";
       display: block;
       width: 50%;
+      max-width: 1400px;
       height: 3px;
       background: rgb(35, 113, 4);
       background: linear-gradient(
@@ -29,36 +30,65 @@ const Heading = styled.div`
   }
 `;
 
-const WorkExp = styled.div`
-  max-width: 750px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+const ExperienceContainer = styled.div`
+  max-width: 1400px;
+  padding: 0 15px;
+  margin: 0 auto;
 `;
 
-const CompanyExp = styled.div`
+const ExperienceSection = styled.div`
   margin-bottom: 50px;
+
+  padding: 0 16px;
+  border-left: 2px solid #222;
+  border-right: 2px solid #222;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(
+      53deg,
+      rgba(35, 113, 4, 1) 0%,
+      rgba(113, 176, 72, 1) 40%,
+      rgba(86, 215, 4, 1) 100%
+    );
+    margin: 20px auto;
+  }
+
+  > p {
+    margin: 10px 0;
+  }
+
+  > h3 {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 20px;
+    color: #333;
+  }
+
+  > h4 {
+    margin: 10px 0;
+    font-weight: 600;
+  }
 `;
 
 const SkillSection = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 500px;
+  height: auto;
   flex-wrap: wrap;
-  background: rgb(35, 113, 4);
-  background: linear-gradient(
-    53deg,
-    rgba(35, 113, 4, 1) 0%,
-    rgba(113, 176, 72, 1) 40%,
-    rgba(86, 215, 4, 1) 100%
-  );
+  background: #e0dfdf;
+  padding: 80px 0;
+  margin: 80px 0;
 `;
 const SkillColumn = styled.div`
   flex: 1;
   margin-right: 10px;
   margin-bottom: 20px;
+  border-left: 2px solid #222;
 
   ul {
     margin-right: 10px;
@@ -81,12 +111,12 @@ const experiencePage = ({ data }) => {
         <Heading>
           <h1>Erfarenhet</h1>
         </Heading>
-        <WorkExp>
+        <ExperienceContainer>
           <div>
             {workNodes.map((workData, index) => (
-              <CompanyExp key={index}>
+              <ExperienceSection key={index}>
                 <h2>{workData.company}</h2>
-                <p>{workData.role}</p>
+                <h3>{workData.role}</h3>
                 <p>{workData.location}</p>
                 <p>
                   {workData.startDate} -{" "}
@@ -96,14 +126,14 @@ const experiencePage = ({ data }) => {
                 {documentToReactComponents(JSON.parse(workData.decription.raw))}
 
                 <p>Färdigheter: {workData.skills.join(", ")}</p>
-              </CompanyExp>
+              </ExperienceSection>
             ))}
           </div>
-        </WorkExp>
+        </ExperienceContainer>
 
         <SkillSection>
           <SkillColumn>
-            <h2>Färdigheter</h2>
+            <h2>Tekniker</h2>
             <ul>
               {skillsNodes.flatMap((skillsData, index) =>
                 skillsData.primary.map((skill, skillIndex) => (
@@ -114,11 +144,21 @@ const experiencePage = ({ data }) => {
             {/* Skapar en array av li element */}
           </SkillColumn>
           <SkillColumn>
-            <h2>Övrigt</h2>
+            <h2>Färdigheter</h2>
             <ul>
               {skillsNodes.flatMap((skillsData, index) =>
                 skillsData.secondary.map((skill, skillIndex) => (
                   <li key={`${index}-secondary-${skillIndex}`}>{skill}</li>
+                ))
+              )}
+            </ul>
+          </SkillColumn>
+          <SkillColumn>
+            <h2>Övrigt</h2>
+            <ul>
+              {skillsNodes.flatMap((skillsData, index) =>
+                skillsData.other.map((skill, skillIndex) => (
+                  <li key={`${index}-other-${skillIndex}`}>{skill}</li>
                 ))
               )}
             </ul>
@@ -128,26 +168,31 @@ const experiencePage = ({ data }) => {
         <Heading>
           <h1>Utbildning</h1>
         </Heading>
-        <div>
-          {educationNodes.map((educationData, index) => (
-            <div key={index}>
-              <h2>{educationData.school}</h2>
-              <h3>{educationData.program}</h3>
-              <div>
-                {documentToReactComponents(
-                  JSON.parse(educationData.description.raw)
-                )}
-              </div>
-              <div>
-                {documentToReactComponents(
-                  JSON.parse(educationData.courses.raw)
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <ExperienceContainer>
+          <div>
+            {educationNodes.map((educationData, index) => (
+              <ExperienceSection key={index}>
+                <h2>{educationData.school}</h2>
+                <h3>{educationData.program}</h3>
+                <p>
+                  {educationData.startDate} - {educationData.endDate}
+                </p>
+                <div>
+                  {documentToReactComponents(
+                    JSON.parse(educationData.description.raw)
+                  )}
+                </div>
+                <h4>Kurser:</h4>
+                <div>
+                  {documentToReactComponents(
+                    JSON.parse(educationData.courses.raw)
+                  )}
+                </div>
+              </ExperienceSection>
+            ))}
+          </div>
+        </ExperienceContainer>
       </main>
-      <Link to="/">Start</Link>
     </>
   );
 };
@@ -190,6 +235,7 @@ export const query = graphql`
       nodes {
         primary
         secondary
+        other
       }
     }
   }

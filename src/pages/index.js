@@ -3,12 +3,22 @@ import { graphql, Link } from "gatsby";
 import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
+const MainContainer = styled.main`
+  /* max-width: 1660px;
+  background-color: #222;
+  margin: auto;
+  padding: 0; */
+  text-align: center;
+`;
+
 const HeroSection = styled.section`
   position: relative;
   height: 100vh;
-  background-image: url(${(props) => props.backgroundImage});
+  /* max-width: 1660px; */
+  /* background-image: url(${(props) => props.backgroundImage});
   background-size: cover;
-  background-position: center;
+  background-position: center; */
+  background-color: #222;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,6 +39,10 @@ const GradientOverlay = styled.div`
 `;
 
 const HeroText = styled.div`
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   color: white;
 `;
@@ -64,12 +78,19 @@ const IndexPage = ({ data }) => {
 
   return (
     <>
-      <main>
+      <MainContainer>
         <HeroSection>
           <GatsbyImage
             image={imageData2}
             alt="Hero Image"
-            style={{ position: "absolute", width: "100%", height: "100%" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              maxWidth: "1700px",
+              maxHeight: "100vh",
+              objectFit: "cover",
+              objectPosition: "50% 50%",
+            }}
           />
           <GradientOverlay />
           <HeroText>
@@ -79,7 +100,7 @@ const IndexPage = ({ data }) => {
             <StartButton to="/about">Mer om mig</StartButton>
           </HeroText>
         </HeroSection>
-      </main>
+      </MainContainer>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import React, { useState } from "react";
 import styled from "styled-components";
 import ProjectCard from "../components/ProjectCard";
@@ -58,7 +58,6 @@ const CategorySelect = styled.div`
     }
     &:active {
       background-color: green;
-      //TODO, fixa active
     }
   }
 `;
@@ -99,9 +98,6 @@ const PortfolioPage = ({ data }) => {
             <ProjectCard key={index} project={project} />
           ))}
         </ProjectCardContainer>
-        <Link className="backToStart" to="/">
-          Hem
-        </Link>
       </main>
     </>
   );

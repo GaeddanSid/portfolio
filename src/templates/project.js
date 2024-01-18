@@ -37,6 +37,25 @@ const ImageContainer = styled.div`
   }
 `;
 
+const StyledLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid green;
+  border-radius: 5px;
+  color: green;
+  padding: 10px;
+  width: 75%;
+  margin: 20px auto;
+  font-size: 24px;
+
+  &:hover {
+    transform: scale(1.05);
+    color: #fff;
+    background-color: green;
+  }
+`;
+
 const ProjectTemplate = ({ data }) => {
   const project = data.contentfulProject;
   const imageData = getImage(project.printScreen);
@@ -78,7 +97,7 @@ const ProjectTemplate = ({ data }) => {
           {documentToReactComponents(JSON.parse(project.description.raw))}
         </SectionContainer>
       </main>
-      <Link to="/">Start</Link>
+      <StyledLink to="/portfolio">Tillbaka</StyledLink>
     </>
   );
 };

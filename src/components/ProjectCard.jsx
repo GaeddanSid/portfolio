@@ -43,7 +43,7 @@ const ProjectButton = styled.button`
   border-radius: 5px;
   color: green;
   padding: 10px;
-  margin: 10px;
+  margin: 10px auto;
 
   &:hover {
     transform: scale(1.05);

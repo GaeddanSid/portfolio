@@ -1,4 +1,4 @@
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import * as React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styled from "styled-components";
@@ -47,15 +47,15 @@ const Article = styled.article`
   }
 `;
 
-const StartLink = styled(Link)`
+const DownloadBtn = styled.button`
   display: block;
-  margin-top: 20px;
   text-decoration: none;
   border: 2px solid green;
   border-radius: 5px;
   color: green;
   padding: 10px;
-  margin: 10px;
+  width: 100%;
+  margin: 20px auto;
   font-size: 24px;
 
   &:hover {
@@ -111,14 +111,14 @@ const aboutPage = (props) => {
         <SubHeading>{aboutNode.role}</SubHeading>
         <ImageContainer>
           <GatsbyImage image={imageData} alt="Portrait" />
-          <CVbutton onClick={handleDownload}>Nedladdningsbart CV</CVbutton>
+          <CVbutton onClick={handleDownload}>Ladda ner CV</CVbutton>
         </ImageContainer>
         <Article>
           {documentToReactComponents(
             JSON.parse(props.data.allContentfulAbout.nodes[0].aboutText.raw)
           )}
         </Article>
-        <StartLink to="/">Hem</StartLink>
+        <DownloadBtn onClick={handleDownload}>Ladda ner CV</DownloadBtn>
       </MainContainer>
     </>
   );

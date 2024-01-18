@@ -1,15 +1,20 @@
 Tillgänglighet:
 
-1. Använder aria-label i Navbar på länkar som saknar text.
-2. Sekventiella element eg h1-h6.
-3. Sätter Language attribut till SE för skärmläsare.
+1. Använder aria-label i Navbar på länkar som saknar text, knappar mm.
+2. Semantisk HTML element eg h1-h6, header, footer, main osv.
+3. Sätter Lang attribut till SE för skärmläsare.
+4. Bilder, Alt attribut
+5. Kontraster och läsbarhet
 
 
 
 SEO:
 
-1. Lägg till meta description på document.
+1. Använder Meta description på document, namn och nyckelord.
 2. Document has a <title> element, samtliga sidor
 3. Links have descriptive text
 4. SVG filer används
 5. Bilder har alt- attribut
+6. Responsiv design
+7. Okomplicerade URLer
+8. Semantisk HTML

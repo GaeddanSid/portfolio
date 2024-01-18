@@ -81,7 +81,6 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    console.log(menuOpen);
   };
 
   // useEffect som lyssnar på resize för att hålla reda på när skärmstorlek ändras

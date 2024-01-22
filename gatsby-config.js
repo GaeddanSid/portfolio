@@ -1,6 +1,11 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Portfolio`,
@@ -32,8 +37,8 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        accessToken: "XiEpOgNtYtSzvW--wkmx1eFIOQVpFSyjfS-cdBlsm7w",
-        spaceId: "2jw7ja0wxioc",
+        accessToken: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        spaceId: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
       },
     },
     "gatsby-plugin-image",
